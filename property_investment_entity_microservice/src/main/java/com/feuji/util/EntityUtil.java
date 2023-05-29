@@ -5,9 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EntityUtil {
-	/*
-	 * entity util
-	 */
+	
 	@Value("${environment}")	
 	private  String environment;
 	
@@ -17,18 +15,20 @@ public class EntityUtil {
 	@Value("${prod-url}")
 	private String prodUrl;
 	
-	public static  String getUrl()
+	public   String getUrl()
 	
 	{
-		EntityUtil util=new EntityUtil();
+		
+		System.out.println(environment);
 	
-		if(util.environment.equals("dev"))
+		if( "dev".equals(environment))
 		{
-			return util.devUrl;
+			System.out.println(devUrl);
+			return devUrl;
 		}
 		else
 		{
-			return util.prodUrl;
+			return prodUrl;
 		}
 		
 	}

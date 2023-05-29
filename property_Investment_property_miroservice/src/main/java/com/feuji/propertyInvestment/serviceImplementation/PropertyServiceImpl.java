@@ -19,6 +19,8 @@ public class PropertyServiceImpl implements PropertyService {
 	PropertyRepositary propertyRepositary;
 	@Autowired
 	private RestTemplate restTemplate;
+	@Autowired
+	private EntityUtil EntityUtil;
 
 	@Override
 	public void save(Property property, int id) {

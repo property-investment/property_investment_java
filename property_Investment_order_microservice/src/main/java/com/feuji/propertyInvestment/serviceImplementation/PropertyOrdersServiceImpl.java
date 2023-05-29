@@ -163,8 +163,13 @@ import com.feuji.util.EntityUtil;
 public class PropertyOrdersServiceImpl implements PropertyOrdersServices {
 	@Autowired
 	PropertyOrdersRepositary propertyOrdersRepositary;
+	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private EntityUtil EntityUtil;
+	
 	@Override
 	public void save(PropertyOrder propertyOrders) {
 		propertyOrdersRepositary.save(propertyOrders);
@@ -228,7 +233,7 @@ public class PropertyOrdersServiceImpl implements PropertyOrdersServices {
 	public PropertyOrder save(PropertyOrder orders, int cid, int pid) {	
 		System.out.println(cid+" "+pid);
 		//restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-		
+		System.out.println(EntityUtil.getUrl()+"in class");
 		Customer customer = restTemplate.getForObject("http://"+EntityUtil.getUrl()+":9041/api/customer/{cid}",Customer.class,cid);		   
 		//setted customer
 		orders.setCustomerId(customer);	

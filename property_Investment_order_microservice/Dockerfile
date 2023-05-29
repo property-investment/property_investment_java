@@ -7,5 +7,4 @@ RUN mvn clean install -DskipTests
 # Run spring boot in Docker
 FROM openjdk:8-jdk-alpine
 COPY --from=build /opt/app/target/*.jar order-service.jar
-
-ENTRYPOINT ["java","-jar","/order-servicel.jar"]
+ENTRYPOINT ["java","-jar","/order-service.jar"]

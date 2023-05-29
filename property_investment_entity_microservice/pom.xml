@@ -67,5 +67,8 @@
 		<finalName>entity-service</finalName>
 	</build>
 	-->
+	<build>
+		<finalName>entity-service</finalName>
+	</build>
 
 </project>

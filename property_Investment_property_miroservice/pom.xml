@@ -81,6 +81,7 @@
                     </configuration>
                 </plugin>
 		</plugins>
+		<finalName>property-service</finalName>
 	</build>
 
 </project>
