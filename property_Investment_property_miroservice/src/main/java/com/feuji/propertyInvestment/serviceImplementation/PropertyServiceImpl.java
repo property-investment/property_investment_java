@@ -3,7 +3,6 @@ package com.feuji.propertyInvestment.serviceImplementation;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -49,7 +48,7 @@ public class PropertyServiceImpl implements PropertyService {
 
 	@Override
 	public List<Property> getProperties() {
-		return propertyRepositary.findAll().stream().filter(property->property.getStartDate().before(new Date())).toList();
+		return propertyRepositary.findAll().stream().filter(property->property.getStartDate().before(new Date())).collect(Collectors.toList());
 	}
 	
 
