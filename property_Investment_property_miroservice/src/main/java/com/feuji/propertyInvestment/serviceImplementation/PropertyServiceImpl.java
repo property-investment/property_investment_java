@@ -48,7 +48,7 @@ public class PropertyServiceImpl implements PropertyService {
 
 	@Override
 	public List<Property> getProperties() {
-		return propertyRepositary.findAll().stream().filter(property->property.getStartDate().before(new Date())).collect(Collectors.toList());
+		  return propertyRepositary.findAll().stream().filter(property->property.getStartDate().before(new Date())).collect(Collectors.toList());
 	}
 	
 
