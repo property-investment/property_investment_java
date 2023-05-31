@@ -314,4 +314,12 @@ public class PropertyOrdersServiceImpl implements PropertyOrdersServices {
 		
 		
 	}
+	public PropertyOrder getOrder(int orderId) {
+		
+		PropertyOrder optionalOrders = propertyOrdersRepositary.getById(orderId);
+		
+			
+			return optionalOrders;
+		
+	}
 }

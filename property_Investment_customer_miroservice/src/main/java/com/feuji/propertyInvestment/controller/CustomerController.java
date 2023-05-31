@@ -49,10 +49,6 @@ public class CustomerController {
 		List<Customer> customers = customerServiceImpl.getCustomer();
 		return ResponseEntity.ok().body(customers);
 	}
-
-	
-	
-	
 	
 	@GetMapping(value = "/verify-customer/{customerMail}/{password}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String verifyCustomerLogin(@PathVariable("customerMail") String customerMail,
@@ -65,9 +61,7 @@ public class CustomerController {
 		} catch (JsonProcessingException e) {
 
 		}
-
 		return json;
-
 	}
 	
 	@GetMapping(value="customer/{id}")

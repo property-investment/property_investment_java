@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 @SpringBootTest(classes = PropertyinvestmentAdminMicroserviceApplication.class)
 
 public class TestAdmin {
+	
 	@Mock
 	AdminServiceImpl adminService;
 	@InjectMocks

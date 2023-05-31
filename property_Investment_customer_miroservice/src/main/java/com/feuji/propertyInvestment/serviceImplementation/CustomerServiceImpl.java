@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,11 +59,13 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepositary.findById(cid).get();
 	}
 
+	
+
 	@Override
 	public String verifyCustomer(String customerMail, String password) {
 
-		Customer login = customerRepositary.findByCustomerMailAndPassword(customerMail, password).get();
-		if (login != null) {
+		Optional<Customer> login = customerRepositary.findByCustomerMailAndPassword(customerMail, password);
+		if (login.isPresent()) {
 			return "Data Matched";
 		} else {
 			return "Not Matched";
@@ -70,6 +74,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer getCustomer(String customerEmail, String password) {
-		return customerRepositary.findByCustomerMailAndPassword(customerEmail, password).get();
+		Optional<Customer> customerOptional = customerRepositary.findByCustomerMailAndPassword(customerEmail, password);
+		if(customerOptional.isPresent()) {
+			return customerOptional.get();
+		}else {
+		    throw new NoSuchElementException("Customer Not Found");
+		}
 	}
+
 }

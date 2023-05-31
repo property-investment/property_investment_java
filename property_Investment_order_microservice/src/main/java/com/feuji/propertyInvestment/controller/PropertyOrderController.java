@@ -144,7 +144,7 @@ public class PropertyOrderController {
 	public ResponseEntity<PropertyOrder> save(@PathVariable("pid") int pid,@PathVariable("cid") int cid,@RequestBody PropertyOrder orders) {
 		updated=true;
 		PropertyOrder latest= propertyOrderImpl.save(orders,cid,pid);
-		//sendMail(latest.getOrderId());
+		sendMail(latest.getOrderId());
 		return ResponseEntity.ok().body(orders);
 	}
 	
@@ -159,7 +159,7 @@ public class PropertyOrderController {
 	@GetMapping("bycustomer/{id}")
 	public List< PropertyOrder> get(@PathVariable int id){
 	List<PropertyOrder> orders=	propertyOrderImpl.getPropertyOrdersByQuerry(id);
-	System.out.println(orders);
+	System.out.println("orders by query\n"+orders);
 		return orders;
 	}
 	 @GetMapping("/send-mail/{id}")
@@ -193,7 +193,6 @@ public class PropertyOrderController {
 		return ResponseEntity.ok().body(allOrders);
 		
 
-
 	}
 	
 	@DeleteMapping("/order/delete/{id}/{status}")
@@ -218,17 +217,18 @@ public class PropertyOrderController {
 	@PutMapping(value="/order/sell",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PropertyOrder> sell(@RequestBody PropertyOrder orders) {
 		
-		System.out.println(orders.getOrderDate()+"orders iddd "+orders);
+		//System.out.println(orders.getOrderDate()+"orders iddd "+orders);
 		
 		if(orders.getNoOfUnits()>0 
-				//&&
-				//(
-				//		orders.getNoOfUnits() <=  propertyOrderImpl.getOrder(orders.getOrderId()).getNoOfUnits())
+				&&
+				(
+						orders.getNoOfUnits() <=  propertyOrderImpl.getOrder(orders.getOrderId()).getNoOfUnits())
 				)
 		{
-		System.out.println(orders);
+		//System.out.println(orders);
+			System.out.println("somethingggggggggggggggggg");
 		propertyOrderImpl.sell(orders);
-		//sendMail(orders.getOrderId());
+		sendMail(orders.getOrderId());
 		
 		return ResponseEntity.ok().body(orders);
 		}
