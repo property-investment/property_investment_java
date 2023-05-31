@@ -148,7 +148,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -158,7 +157,7 @@ import com.feuji.propertyinvestment.entity.Property;
 import com.feuji.propertyinvestment.entity.PropertyOrder;
 import com.feuji.proppertyInvestment.repository.PropertyOrdersRepositary;
 import com.feuji.util.EntityUtil;
-
+ 
 @Service
 public class PropertyOrdersServiceImpl implements PropertyOrdersServices {
 	@Autowired
@@ -317,7 +316,6 @@ public class PropertyOrdersServiceImpl implements PropertyOrdersServices {
 	public PropertyOrder getOrder(int orderId) {
 		
 		PropertyOrder optionalOrders = propertyOrdersRepositary.getById(orderId);
-		
 			
 			return optionalOrders;
 		
