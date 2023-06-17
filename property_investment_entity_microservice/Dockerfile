@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM adoptopenjdk/openjdk:11
 VOLUME /tmp
 ADD entity-service.jar /entity-service.jar
 ENTRYPOINT ["java", "-jar", "/entity-service.jar"]
